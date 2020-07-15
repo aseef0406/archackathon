@@ -1,0 +1,587 @@
+<div id="application" class="page">
+  <div class="divided title">
+    Application
+  </div>
+
+  <div class="ui stackable page grid">
+    <div class="column">
+      <div class="ui form"
+            ng-class="{'loading': loading}">
+
+        <div class="divided title">Basic Information</div>
+
+        <fieldset ng-disabled="regIsClosed">
+
+        <div class="field">
+          <label> Email </label>
+          <input type="email"
+                 name="email"
+                 disabled="disabled"
+                 ng-model="user.email">
+        </div>
+
+        <div class="field">
+          <label> Full Name </label>
+          <input type="text"
+                 name="name"
+                 ng-model="user.profile.name">
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <select
+            name="gender"
+            ng-model="user.profile.gender">
+            <option value="">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+            <option value="N">I prefer not to answer.</option>
+          </select>
+        </div>
+        <div class="field">
+                     <label>shirtSize:</label></td>
+                      
+                        <select
+                        name="shirtSize1"
+                        ng-model="user.profile.shirtSize"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+          </div>
+          <div class="field">
+            <label>Address</label>
+            <textarea name="address" ng-model="user.profile.address"  rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label>I would describe myself as a...</label>
+            <input type="text"
+                   placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
+                   ng-model="user.profile.description">
+          </div>
+<!--
+        <div class="field" ng-show="autoFilledSchool">
+          <label> School </label>
+          <input class="ui input"
+                 disabled="disabled"
+                 ng-show="autoFilledSchool"
+                 ng-model="user.profile.school">
+        </div>
+
+        <div class="field" ng-show="!autoFilledSchool">
+          <label> School </label>
+          <div id="school" class="ui search">
+            <div class="ui input">
+              <input class="prompt" type="text" placeholder="School" name="school" ng-model="user.profile.school">                
+            </div>
+            <div class="results"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Graduation Year</label>
+          <select
+            name="year"
+            ng-model="user.profile.graduationYear">
+            <option value="">Graduation Year</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Gender</label>
+          <select
+            name="gender"
+            ng-model="user.profile.gender">
+            <option value="">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+            <option value="N">I prefer not to answer.</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>I would describe myself as a...</label>
+          <input type="text"
+                 placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
+                 ng-model="user.profile.description">
+        </div>
+
+        <div class="field">
+          <label>
+              What would you like to learn or get out of HackMIT? (optional)
+          </label>
+          <textarea ng-model="user.profile.essay">
+          </textarea>
+        </div>
+
+        <div class="field"
+             ng-hide="isMitStudent">
+          <p>
+            Because of limitations imposed by MIT, we are not legally allowed to host
+            non-MIT minors (those under 18) for HackMIT 2015. Checking the box below affirms that you are or will be 18 years or older by September 19th, 2015.
+          </p>
+          <p>
+            <strong>
+            We will be checking ID. If you are a non-MIT minor, you will be turned away at the door.
+            </strong>
+          </p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="adult" ng-model="user.profile.adult">
+            <label for="adult">I am 18 or older.</label>
+          </div>
+        -->
+        <div>
+          <input type="checkbox" id="haveIdea" name="haveIdea" value="true" ng-model="user.haveIdea">
+          <label for="haveIdea">I have a Idea!!!!!!</label>        
+        </div>
+        <div ng-if="user.haveIdea==true">
+            <div class="divided title"></div>
+            <div class="divided title">Idea Details (only idea owner)</div>
+              <div class="field">
+                <label>Idea Title</label>
+                <input type="text"
+                      placeholder="IdeaTitle"
+                      ng-model="user.idea.ideatitle">
+              </div>
+              <div class="field">
+                <label>Team Name</label>
+                <input type="text"
+                      ng-model="user.teamName">
+              </div>
+              
+              <div>
+                <label>Category</label><br>
+                <div style="margin:20px;">
+                  <input type="checkbox" id="ml" name="ml" value="true" ng-model="user.idea.category.ml">
+                  <label for="ml">Machine Learning</label><br>
+                  <input type="checkbox" id="ai" name="ai" value="true" ng-model="user.idea.category.ai">
+                  <label for="ai">Artificial Intelligence</label><br>
+                  <input type="checkbox" id="dl" name="dl" value="true" ng-model="user.idea.category.dl">
+                  <label for="dl">Deep Learning</label><br>
+                  <input type="checkbox" id="cys" name="cys" value="true" ng-model="user.idea.category.cys">
+                  <label for="cys">Cyber Security</label><br>
+                  <input type="checkbox" id="finance" name="finance" value="true" ng-model="user.idea.category.finance">
+                  <label for="finance">Finance</label><br>
+                </div>
+              <!--<select
+                name="category"
+                ng-model="user.profile.category">
+                <option value="">cat</option>
+                <option value="cat1">cat1</option>
+                <option value="cat2">cat2</option>
+              </select>-->
+            </div>
+            <div class="field">
+              <label>
+                  Description
+              </label>
+              <textarea ng-model="user.idea.ideadesc">
+              </textarea>
+            </div>
+            
+        
+        
+          <div>
+            <input type="checkbox" id="haveTeam" name="haveTeam" value="true" ng-model="user.haveTeam">
+            <label for="haveTeam">Add Team Details</label>        
+          </div>
+          <div ng-if="user.haveTeam==true">
+          <div class="field">
+            <label>
+              Team Details
+            </label>
+            <br>
+            <div class="field">
+           
+              <label> Team Size (required) </label>
+              <select
+                name="teamSize"
+                ng-model="user.idea.teamSize"
+                required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </div>
+            <div ng-if="user.idea.teamSize==1">
+              <div class="field" >
+                <label> Add team member email </label>
+                <div id="teammem" class="ui search">
+                  <div class="ui input">
+                    <input class="prompt" type="text" placeholder="Team Member EmailId" name="teammem" ng-model="user.idea.teammembers.emails.email1"/>                
+                    <input type="submit" value="check" ng-click="getUserByEmail()"/>
+                  </div>
+                  <div class="results"></div>
+                </div>
+                <div><ul><li>Email : {{user.idea.teammembers.emails.email1}}</li><li>Name : {{teammemname1}} </li></ul></div>
+              </div>
+            </div>
+            <div ng-if="user.idea.teamSize==2">
+              <div class="field" >
+                <label> Add team member email </label>
+                <div id="teammem" class="ui search">
+                  <div class="ui input">
+                    <input class="prompt" type="text" placeholder="Team Member EmailId" name="teammem" ng-model="user.idea.teammembers.emails.email1"/>                
+                    <input type="submit" value="check" ng-click="getUserByEmail()"/>
+                  </div>
+                  <div class="results"></div>
+                </div>
+                <div><ul><li>Email : {{user.idea.teammembers.emails.email1}}</li><li>Name : {{teammemname1}}</li></ul></div>
+              </div>
+              <div class="field" >
+                
+                <label> Add team member email </label>
+                <div id="teammem" class="ui search">
+                  <div class="ui input">
+                    <input class="prompt" type="text" placeholder="Team Member EmailId" name="teammem" ng-model="user.idea.teammembers.emails.email2"/>                
+                    <input type="submit"  value="check" ng-click="getUserByEmail2()"/>
+                  </div>
+                  <div class="results"></div>
+                </div>
+                <div><ul><li>Email : {{user.idea.teammembers.emails.email2}}</li><li>Name : {{teammemname2}}</li></ul></div>
+              </div>
+
+            </div>
+            <div class="message" style="color:red">
+
+            <b>{{error}}</b>
+            </div>
+        
+        </div>
+        </div>
+ <!--        <div  class="field">
+          <label> Add team member email </label>
+          <div id="teammem" class="ui search">
+            <div class="ui input">
+              <input class="prompt" type="text" placeholder="Team Member EmailId" name="teammem" ng-model="user.profile.school">                
+            </div>
+            <div class="results"></div>
+          </div>
+        </div>
+          
+          <div class="field">
+            <label>
+              Do you have a team?
+            </label>
+            <div class="ui radio">
+              <input type="radio" ng-model="user.profile.haveTeam" ng-click="user.profile.haveTeam='true'" >
+              <label> Yes, I want to add team details </label>
+           
+              <input type="radio" ng-model="user.profile.haveTeam" ng-click="user.profile.haveTeam='false'" >
+              <label> No, looking for a team </label>
+            </div>
+          </div>
+          <div
+            ng-if="user.profile.haveTeam=='false'">
+            <div class="field">
+              <label>
+               Specification for other members
+              </label>
+              <input type="text"
+                  
+                   ng-model="user.profile.memspecify">
+
+            </div>
+          </div>
+          <div
+            ng-if="user.profile.haveTeam=='true'">
+            <div class="field">
+              <label>
+                Team Details
+              </label>
+              <br>
+              <div class="field">
+             
+                <label> Team Size (required) </label>
+                <select
+                  name="teamSize"
+                  ng-model="user.profile.teamSize"
+                  required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div ng-if="user.profile.teamSize==1">
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name1"
+                          ng-model="user.profile.teammembers.names.name1"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender1"
+                          ng-model="user.profile.teammembers.gender1"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirtSize1"
+                        ng-model="user.profile.teammembers.shirtSizes.shirtSize1"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div ng-if="user.profile.teamSize==2">
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name1"
+                          ng-model="user.profile.teammembers.names.name1"
+                          required>i
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender1"
+                          ng-model="user.profile.teammembers.gender1"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirtSize1"
+                        ng-model="user.profile.teammembers.shirtSizes.shirtSize1"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name2"
+                          ng-model="user.profile.teammembers.names.name2"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender2"
+                          ng-model="user.profile.teammembers.gender2"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirtSize2"
+                        ng-model="user.profile.teammembers.shirtSizes.shirtSize2"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                
+              </div>
+              <div ng-if="user.profile.teamSize==3">
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name1"
+                          ng-model="user.profile.teammembers.names.name1"
+                          required>i
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender1"
+                          ng-model="user.profile.teammembers.gender1"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirtSize1"
+                        ng-model="user.profile.teammembers.shirtSizes.shirtSize1"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name2"
+                          ng-model="user.profile.teammembers.names.name2"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender2"
+                          ng-model="user.profile.teammembers.gender2"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirtSize2"
+                        ng-model="user.profile.teammembers.shirtSizes.shirtSize2"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name3"
+                          ng-model="user.profile.teammembers.names.name3"
+                          required>i
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender3"
+                          ng-model="user.profile.teammembers.gender3"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirtSize3"
+                        ng-model="user.profile.teammembers.shirtSizes.shirtSize3"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div ng-repeat="i in teamS" class="description">
+              
+                <div class="field" style="width:80%;margin:20px;">
+                  <table style="width:80%;margin-left:50px;padding:100px;">
+                    <tr>
+                      <td colspan="1"><label>name :</label></td>
+                      <td colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="name1"
+                          ng-model="user.ideasubmition.name_{{i}}"
+                          required>i
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>gender:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <input type="text"
+                          name="gender1"
+                          ng-model="user.ideasubmition.gender1"
+                          required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label>shirtSize:</label></td>
+                      <td  colspan="2" style="margin-left:50px">
+                        <select
+                        name="shirt"
+                        ng-model="user.ideasubmition.shirtSize"
+                        required>
+                        <option value="">Shirt Size</option>
+                        <option value="XS">Unisex X-Small</option>
+                        <option value="S">Unisex Small</option>
+                        <option value="M">Unisex Medium</option>
+                        <option value="L">Unisex Large</option>
+                        <option value="XL">Unisex X-Large</option>
+                        <option value="XXL">Unisex XX-Large</option>
+                        <option value="WXS">Women's X-Small</option>
+                        <option value="WS">Women's Small</option>
+                        <option value="WM">Women's Medium</option>
+                        <option value="WL">Women's Large</option>
+                        <option value="WXL">Women's X-Large</option>
+                        <option value="WXXL">Women's XX-Large</option>
+                      </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>-->
+        </div>
+
+        <br>
+
+        <div class="field" ng-hide="regIsClosed">
+          <button type="submit"
+                  class="fluid ui purple button"
+                  ng-click="submitForm()">
+            Submit
+          </button>
+        </div>
+
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
